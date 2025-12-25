@@ -30,3 +30,33 @@
 }
 
 ```
+
+## Author
+
+👤 &nbsp; **Miguel Ricardo Gomez**
+
+- GitHub: [@MiguelArgentina](https://github.com/MiguelArgentina)
+- Twitter: [@Qete_arg](https://twitter.com/Qete_arg)
+- LinkedIn: [Miguel Ricardo Gomez](https://www.linkedin.com/in/miguelricardogomez/)
+
+<br>
+<br>
+<p align="center">
+  <a href="https://github.com/MiguelArgentina/bookmark-vault-api/issues">
+  <img src="https://img.shields.io/github/issues-raw/MiguelArgentina/bookmark-vault-api?style=for-the-badge"
+       alt="Issues"></a>
+
+   <a href="https://github.com/MiguelArgentina/bookmark-vault-api/pulls">
+  <img src="https://img.shields.io/github/issues-pr/MiguelArgentina/bookmark-vault-api?style=for-the-badge"
+       alt="Pull Requests"></a>
+
+   <a href="https://github.com/MiguelArgentina/bookmark-vault-api/blob/main/LICENSE">
+  <img src="https://img.shields.io/github/license/MiguelArgentina/bookmark-vault-api?style=for-the-badge"
+       alt="License"></a>
+</p>
+
+## Show your support
+
+Give a &nbsp;⭐️ &nbsp; if you like this project!
+
+## Acknowledgments
