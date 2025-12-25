@@ -1,24 +1,32 @@
-# README
+ # Endpoints
+## Auth
+- POST /v1/auth/signup
+- POST /v1/auth/login
+- POST /v1/auth/refresh
+- POST /v1/auth/logout
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Bookmarks
+- GET /v1/bookmarks
+- POST /v1/bookmarks
+- GET /v1/bookmarks/:id
+- PATCH /v1/bookmarks/:id
+- DELETE /v1/bookmarks/:id
 
-Things you may want to cover:
+## Query features
+### When making a `GET` request to `/bookmarks`
 
-* Ruby version
+- Pagination: page, per_page
+- Filtering: tag, q (search in title/url)
 
-* System dependencies
+## Error response format
 
-* Configuration
+```json
+{
+  "error": {
+    "code": "validation_error",
+    "message": "Email is invalid",
+    "details": { "email": ["is invalid"] }
+  }
+}
 
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+```
