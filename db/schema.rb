@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[8.0].define(version: 2025_12_25_135931) do
+ActiveRecord::Schema[8.0].define(version: 2025_12_25_185649) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "pg_catalog.plpgsql"
 
@@ -32,6 +32,9 @@ ActiveRecord::Schema[8.0].define(version: 2025_12_25_135931) do
     t.bigint "replaced_by_id"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.index ["expires_at"], name: "index_refresh_tokens_on_expires_at"
+    t.index ["revoked_at"], name: "index_refresh_tokens_on_revoked_at"
+    t.index ["token_digest"], name: "index_refresh_tokens_on_token_digest", unique: true
     t.index ["user_id"], name: "index_refresh_tokens_on_user_id"
   end
 
