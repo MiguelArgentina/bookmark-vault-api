@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api do
     namespace :v1 do
-      resources :bookmarks, only: [:index]
+      resources :bookmarks, only: %i[index create show update destroy]
       post 'login', to: 'authentication#login'
       post 'logout', to: 'authentication#logout'
       post 'register', to: 'authentication#register'
