@@ -9,12 +9,10 @@ Rails.application.routes.draw do
   # root "posts#index"
   namespace :api do
     namespace :v1 do
-      namespace :auth do
-        post 'login', to: 'authentication#login'
-        post 'logout', to: 'authentication#logout'
-        post 'register', to: 'authentication#register'
-        post 'refresh', to: 'authentication#refresh'
-      end
+      post 'login', to: 'authentication#login'
+      post 'logout', to: 'authentication#logout'
+      post 'register', to: 'authentication#register'
+      post 'refresh', to: 'authentication#refresh'
     end
   end
 end
