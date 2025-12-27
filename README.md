@@ -1,16 +1,46 @@
- # Endpoints
-## Auth
-- POST /v1/auth/signup
-- POST /v1/auth/login
-- POST /v1/auth/refresh
-- POST /v1/auth/logout
+# Bookmark Vault API
+[![CI](https://github.com/MiguelArgentina/bookmark-vault-api/actions/workflows/ci.yml/badge.svg?branch=main&cache_seconds=60)](https://github.com/MiguelArgentina/bookmark-vault-api/actions/workflows/ci.yml)
 
-## Bookmarks
-- GET /v1/bookmarks
-- POST /v1/bookmarks
-- GET /v1/bookmarks/:id
-- PATCH /v1/bookmarks/:id
-- DELETE /v1/bookmarks/:id
+Simple Rails API to save bookmarks.
+Main goal: show clean code, auth, rate limiting, and tests.
+
+## Features
+- JWT access token (Bearer token)
+- Refresh token rotation + logout (refresh token is stored as digest in DB, raw token is never stored)
+- Bookmarks CRUD, scoped to current user
+- Filtering + search + pagination on bookmarks index
+- Rate limiting with Rack::Attack
+- Request specs for auth, bookmarks, rate limiting
+
+---
+
+# Quickstart
+
+## Requirements
+- Ruby 3.3.8
+- DB (Postgres in this example)
+
+## Setup
+```bash
+clone the repo then run:
+> bundle install
+> bin/rails db:create db:migrate
+> bin/rails s
+````
+
+# Endpoints
+## Auth
+- POST /api/v1/register
+- POST /api/v1/login
+- POST /api/v1/refresh
+- POST /api/v1/logout
+
+## Bookmarks (requires Bearer token)
+- GET /api/v1/bookmarks
+- POST /api/v1/bookmarks
+- GET /api/v1/bookmarks/:id
+- PATCH /api/v1/bookmarks/:id
+- DELETE /api/v1/bookmarks/:id
 
 ## Query features
 ### When making a `GET` request to `/bookmarks`
@@ -30,6 +60,15 @@
 }
 
 ```
+
+# Rate limiting (Rack::Attack)
+
+## Current throttles:
+
+- POST /api/v1/login: 2 requests / 20 seconds / IP
+- POST /api/v1/register: 5 requests / minute / IP
+- POST /api/v1/refresh: 10 requests / minute / IP
+- /api/v1/* authenticated requests (excluding auth endpoints): 60 requests / minute / user (sub from JWT), fallback to IP
 
 ## Author
 
@@ -60,3 +99,7 @@
 Give a &nbsp;⭐️ &nbsp; if you like this project!
 
 ## Acknowledgments
+- Rails
+- Rack::Attack
+- JWT gem
+- RSpec + FactoryBot + Faker
