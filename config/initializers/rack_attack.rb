@@ -42,9 +42,9 @@ class Rack::Attack
   # Throttle all requests by IP (60rpm)
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:req/ip:#{req.ip}"
-  #throttle('req/ip', limit: 5, period: 1.minute) do |req|
+  # throttle('req/ip', limit: 5, period: 1.minute) do |req|
   #  req.ip # unless req.path.start_with?('/assets')
-  #end
+  # end
 
   ### Prevent Brute-Force Login Attacks ###
 
@@ -58,20 +58,20 @@ class Rack::Attack
   # Throttle POST requests to /login by IP address
   #
   # Key: "rack::attack:#{Time.now.to_i/:period}:logins/ip:#{req.ip}"
-  throttle('logins/ip', limit: 2, period: 20.seconds) do |req|
-    if (req.path == '/api/v1/login') && req.post?
+  throttle("logins/ip", limit: 2, period: 20.seconds) do |req|
+    if (req.path == "/api/v1/login") && req.post?
       req.ip
     end
   end
 
-  throttle('registrations/ip', limit: 5, period: 1.minute) do |req|
-    if (req.path == '/api/v1/register') && req.post?
+  throttle("registrations/ip", limit: 5, period: 1.minute) do |req|
+    if (req.path == "/api/v1/register") && req.post?
       req.ip
     end
   end
 
-  throttle('refresh/ip', limit: 10, period: 1.minute) do |req|
-    if (req.path == '/api/v1/refresh') && req.post?
+  throttle("refresh/ip", limit: 10, period: 1.minute) do |req|
+    if (req.path == "/api/v1/refresh") && req.post?
       req.ip
     end
   end
@@ -98,11 +98,11 @@ class Rack::Attack
   # throttle logins for another user and force their login requests to be
   # denied, but that's not very common and shouldn't happen to you. (Knock
   # on wood!)
-  throttle('logins/email', limit: 5, period: 20.seconds) do |req|
-    if req.path == '/api/v1/login' && req.post?
+  throttle("logins/email", limit: 5, period: 20.seconds) do |req|
+    if req.path == "/api/v1/login" && req.post?
       # Normalize the email, using the same logic as your authentication process, to
       # protect against rate limit bypasses. Return the normalized email if present, nil otherwise.
-      req.params['email'].to_s.downcase.gsub(/\s+/, "").presence
+      req.params["email"].to_s.downcase.gsub(/\s+/, "").presence
     end
   end
 

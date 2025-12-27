@@ -9,7 +9,7 @@ class ApplicationController < ActionController::API
     user_id = payload[:sub]
     @current_user = User.find_by(id: user_id)
 
-    return render_unauthorized("User not found") if @current_user.nil?
+    render_unauthorized("User not found") if @current_user.nil?
   rescue ::Auth::JsonWebToken::DecodeError => e
     render_unauthorized(e.message)
   end

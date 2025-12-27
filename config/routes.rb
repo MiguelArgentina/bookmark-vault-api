@@ -10,10 +10,10 @@ Rails.application.routes.draw do
   namespace :api do
     namespace :v1 do
       resources :bookmarks, only: %i[index create show update destroy]
-      post 'login', to: 'authentication#login'
-      post 'logout', to: 'authentication#logout'
-      post 'register', to: 'authentication#register'
-      post 'refresh', to: 'authentication#refresh'
+      post "login", to: "authentication#login"
+      post "logout", to: "authentication#logout"
+      post "register", to: "authentication#register"
+      post "refresh", to: "authentication#refresh"
     end
   end
 end

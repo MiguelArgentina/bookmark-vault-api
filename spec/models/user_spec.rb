@@ -34,5 +34,4 @@ RSpec.describe User, type: :model do
       expect(u.errors[:password_confirmation]).to be_present
     end
   end
-
 end
